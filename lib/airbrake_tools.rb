@@ -157,7 +157,7 @@ module AirbrakeTools
       end
 
       notices.group_by do |notice|
-        notice.backtrace[0..compare_depth]
+        notice.backtrace.reject { |l| l.include?("[GEM_ROOT]/gems/newrelic_rpm-") }[0..compare_depth]
       end
     end
 
